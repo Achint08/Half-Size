@@ -4,7 +4,7 @@ from sklearn.decomposition import PCA
 import subprocess
 
 Glove = {}
-f = open('/home/vikas/Desktop/glove.6B/glove.6B.300d.txt')
+f = open('../glove.840B.300d.txt')
 
 print("Loading Glove vectors.")
 for line in f:
@@ -34,9 +34,9 @@ z = []
 
 # Removing Projections on Top Components
 for i, x in enumerate(X_train):
-	for u in U1[0:7]:        
-        	x = x - np.dot(u.transpose(),x) * u 
-	z.append(x)
+    for u in U1[0:7]:        
+            x = x - np.dot(u.transpose(),x) * u 
+    z.append(x)
 
 z = np.asarray(z)
 
@@ -60,7 +60,7 @@ embedding_file = open('pca_embed2.txt', 'w')
 for i, x in enumerate(X_train_names):
         final_pca_embeddings[x] = X_new_final[i]
         embedding_file.write("%s\t" % x)
-    	for u in Ufit[0:7]:
+        for u in Ufit[0:7]:
             final_pca_embeddings[x] = final_pca_embeddings[x] - np.dot(u.transpose(),final_pca_embeddings[x]) * u 
 
         for t in final_pca_embeddings[x]:
@@ -72,4 +72,4 @@ for i, x in enumerate(X_train_names):
 print("Results for the Embedding")
 print subprocess.check_output(["python", "all_wordsim.py", "pca_embed2.txt", "data/word-sim/"])
 print("Results for Glove")
-print subprocess.check_output(["python", "all_wordsim.py", "../glove.6B/glove.6B.300d.txt", "data/word-sim/"])
+print subprocess.check_output(["python", "all_wordsim.py", "../glove.840B.300d.txt", "data/word-sim/"])
