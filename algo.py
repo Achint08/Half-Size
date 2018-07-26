@@ -16,7 +16,7 @@ for line in f:
 f.close()
 
 print("Done.")
-os.system("../glove.840B.300d.txt")
+os.system("sudo rm ../glove.840B.300d.txt")
 X_train = []
 X_train_names = []
 for x in Glove:
