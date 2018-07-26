@@ -2,6 +2,7 @@ import numpy as np
 import cPickle as pickle
 from sklearn.decomposition import PCA
 import subprocess
+import os
 
 Glove = {}
 f = open('../glove.840B.300d.txt')
@@ -15,6 +16,7 @@ for line in f:
 f.close()
 
 print("Done.")
+os.system("../glove.840B.300d.txt")
 X_train = []
 X_train_names = []
 for x in Glove:
@@ -69,7 +71,7 @@ for i, x in enumerate(X_train_names):
         embedding_file.write("\n")
 
 
-print("Results for the Embedding")
-print subprocess.check_output(["python", "all_wordsim.py", "pca_embed2.txt", "data/word-sim/"])
-print("Results for Glove")
-print subprocess.check_output(["python", "all_wordsim.py", "../glove.840B.300d.txt", "data/word-sim/"])
+# print("Results for the Embedding")
+# print subprocess.check_output(["python", "all_wordsim.py", "pca_embed2.txt", "data/word-sim/"])
+# print("Results for Glove")
+# print subprocess.check_output(["python", "all_wordsim.py", "../glove.840B.300d.txt", "data/word-sim/"])
