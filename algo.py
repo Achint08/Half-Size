@@ -61,12 +61,12 @@ embedding_file = open('pca_embed2.txt', 'w')
 
 for i, x in enumerate(X_train_names):
         final_pca_embeddings[x] = X_new_final[i]
-        embedding_file.write("%s\t" % x)
+        embedding_file.write("%s " % x)
         for u in Ufit[0:7]:
             final_pca_embeddings[x] = final_pca_embeddings[x] - np.dot(u.transpose(),final_pca_embeddings[x]) * u 
 
         for t in final_pca_embeddings[x]:
-                embedding_file.write("%f\t" % t)
+                embedding_file.write("%f " % t)
         
         embedding_file.write("\n")
 
